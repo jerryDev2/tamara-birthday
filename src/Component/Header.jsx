@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
-import tamaraDay from "../assets/TamaraDay.mp3";
+import tamaraDay from "../assets/HappyBirthdayTamara.mp3";
 
 function Header() {
   const [isPlaying, setIsPlaying] = useState(false);
