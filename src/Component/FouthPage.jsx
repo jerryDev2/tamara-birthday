@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import video1 from "../assets/images/video2.mp4";
 import video2 from "../assets/images/video4.mp4";
 import video3 from "../assets/images/video5.mp4";
@@ -7,7 +7,26 @@ import video5 from "../assets/images/video3.mp4";
 import image6 from "../assets/images/image4.jpeg";
 import { Link } from "react-router-dom";
 
+const memoryVideos = [video1, video2, video3, video4, video5];
+
 function FouthPage() {
+  const [selectedVideo, setSelectedVideo] = useState(null);
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    if (videoRef.current && selectedVideo) {
+      videoRef.current.currentTime = 0;
+      videoRef.current.play().catch(() => {});
+    }
+  }, [selectedVideo]);
+
+  const closeVideo = () => {
+    if (videoRef.current) {
+      videoRef.current.pause();
+    }
+    setSelectedVideo(null);
+  };
+
   return (
     <section className="flex min-h-screen w-full flex-col justify-center gap-4 bg-[url(/images/image3.jpg)] bg-cover bg-center px-4 py-16 sm:px-6 lg:px-8">
       <div className="pt-10 text-center">
@@ -26,70 +45,25 @@ function FouthPage() {
       </div>
 
       <div className="mx-auto grid w-full max-w-5xl grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3">
-        <div className="h-28 overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 hover:scale-[1.02] sm:h-32 md:h-40">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="h-full w-full object-cover"
+        {memoryVideos.map((video, index) => (
+          <button
+            key={index}
+            type="button"
+            onClick={() => setSelectedVideo(video)}
+            className="h-28 overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 hover:scale-[1.02] sm:h-32 md:h-40"
           >
-            <source src={video1} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        </div>
-
-        <div className="h-28 overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 hover:scale-[1.02] sm:h-32 md:h-40">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="h-full w-full object-cover"
-          >
-            <source src={video2} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        </div>
-
-        <div className="h-28 overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 hover:scale-[1.02] sm:h-32 md:h-40">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="h-full w-full object-cover"
-          >
-            <source src={video3} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        </div>
-
-        <div className="h-28 overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 hover:scale-[1.02] sm:h-32 md:h-40">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="h-full w-full object-cover"
-          >
-            <source src={video4} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        </div>
-
-        <div className="h-28 overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 hover:scale-[1.02] sm:h-32 md:h-40">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="h-full w-full object-cover"
-          >
-            <source src={video5} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        </div>
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="h-full w-full object-cover"
+            >
+              <source src={video} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </button>
+        ))}
 
         <div className="h-28 overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 hover:scale-[1.02] sm:h-32 md:h-40">
           <img
@@ -113,6 +87,32 @@ function FouthPage() {
           </button>
         </Link>
       </div>
+
+      {selectedVideo && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#2c0e55]/80 p-4 backdrop-blur-sm">
+          <div className="relative w-full max-w-4xl overflow-hidden rounded-[28px] bg-black shadow-2xl">
+            <button
+              type="button"
+              onClick={closeVideo}
+              className="absolute right-3 top-3 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/80 text-xl font-bold text-[#2c0e55]"
+            >
+              ×
+            </button>
+
+            <video
+              ref={videoRef}
+              controls
+              autoPlay
+              playsInline
+              className="h-[60vh] w-full object-cover"
+              onEnded={closeVideo}
+            >
+              <source src={selectedVideo} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

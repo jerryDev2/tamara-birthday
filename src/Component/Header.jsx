@@ -23,7 +23,7 @@ function Header() {
       <div className="w-full fixed top-0 z-50  ">
         <header className="flex items-center justify-between max-w-225 mx-auto  w-full p-5 ">
           <div className={isDarkBackground ? "text-white" : "text-black"}>
-            <h1 className="font-semibold text-xl"> 💖 For My Amazing Sister</h1>
+            <h1 className="font-semibold text-xl">For My Amazing Sister</h1>
           </div>
           <div
             onClick={tooglePlay}

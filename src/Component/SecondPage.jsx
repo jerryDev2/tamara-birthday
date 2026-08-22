@@ -20,7 +20,7 @@ function SecondPage() {
           It's Your Day!
         </h2>
 
-        <div className="relative mx-auto h-56 w-56 overflow-hidden rounded-full border-4 border-white bg-amber-500 shadow-2xl sm:h-72 sm:w-72 lg:h-80 lg:w-80">
+        <div className="relative mx-auto h-65 w-65 overflow-hidden rounded-full border-4 border-white bg-amber-500 shadow-2xl sm:h-72 sm:w-72 lg:h-80 lg:w-80">
           <video
             autoPlay
             muted
