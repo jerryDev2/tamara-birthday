@@ -1,13 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
 import video1 from "../assets/images/video2.mp4";
-import video2 from "../assets/images/video4.mp4";
+import video2 from "../assets/images/video9.mp4";
 import video3 from "../assets/images/video5.mp4";
 import video4 from "../assets/images/video7.mp4";
 import video5 from "../assets/images/video3.mp4";
-import image6 from "../assets/images/image4.jpeg";
+import video6 from "../assets/images/video10.mp4";
 import { Link } from "react-router-dom";
 
-const memoryVideos = [video1, video2, video3, video4, video5];
+const memoryVideos = [video1, video2, video3, video4, video5, video6];
 
 function FouthPage() {
   const [selectedVideo, setSelectedVideo] = useState(null);
@@ -28,8 +28,12 @@ function FouthPage() {
   };
 
   return (
-    <section className="flex min-h-screen w-full flex-col justify-center gap-4 bg-[url(/images/image3.jpg)] bg-cover bg-center px-4 py-16 sm:px-6 lg:px-8">
-      <div className="pt-10 text-center">
+    <section className="relative flex min-h-screen w-full flex-col justify-center gap-4 overflow-hidden bg-[url(/images/image3.jpg)] bg-cover bg-center px-4 py-16 sm:px-6 lg:px-8">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.25),_transparent_30%),linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.18))]" />
+      <div className="absolute left-8 top-12 h-32 w-32 rounded-full bg-[#ffbfd7]/30 blur-3xl animate-pulse" />
+      <div className="absolute bottom-8 right-10 h-36 w-36 rounded-full bg-[#ffd8a7]/25 blur-3xl animate-pulse" />
+
+      <div className="relative z-10 pt-10 text-center">
         <h1
           className="text-4xl font-semibold text-[#2c0e55] sm:text-5xl"
           style={{ fontFamily: "Pacifico" }}
@@ -44,7 +48,7 @@ function FouthPage() {
         </p>
       </div>
 
-      <div className="mx-auto grid w-full max-w-5xl grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3">
+      <div className="relative z-10 mx-auto grid w-full max-w-5xl grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3">
         {memoryVideos.map((video, index) => (
           <button
             key={index}
@@ -56,6 +60,7 @@ function FouthPage() {
               autoPlay
               muted
               loop
+              preload="metadata"
               playsInline
               className="h-full w-full object-cover"
             >
@@ -64,17 +69,9 @@ function FouthPage() {
             </video>
           </button>
         ))}
-
-        <div className="h-28 overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 hover:scale-[1.02] sm:h-32 md:h-40">
-          <img
-            src={image6}
-            alt="Memory"
-            className="h-full w-full object-cover"
-          />
-        </div>
       </div>
 
-      <div className="mx-auto mt-2 flex w-full max-w-5xl items-center justify-between">
+      <div className="relative z-10 mx-auto mt-2 flex w-full max-w-5xl items-center justify-between">
         <Link to={"/third-page"}>
           <button className="flex h-14 w-14 items-center justify-center rounded-full border-2 border-[#ff7ed8] bg-transparent text-white transition-all duration-300 hover:scale-105 hover:bg-[#ff7ed8] hover:border-white">
             <i className="fa-solid fa-arrow-left text-xl text-white"></i>

@@ -3,8 +3,12 @@ import { Link } from "react-router-dom";
 
 function ThirdPage() {
   return (
-    <section className="flex min-h-screen w-full items-center justify-center bg-[url(/images/background5.jpg)] bg-cover bg-center px-4 py-20 sm:px-6">
-      <div className="mx-auto w-full max-w-3xl pt-10">
+    <section className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-[url(/images/background5.jpg)] bg-cover bg-center px-4 py-20 sm:px-6">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.18),_transparent_35%),linear-gradient(180deg,rgba(32,11,46,0.35),rgba(32,11,46,0.7))]" />
+      <div className="absolute left-8 top-10 h-24 w-24 rounded-full bg-[#ff9ed8]/25 blur-3xl animate-pulse" />
+      <div className="absolute bottom-10 right-8 h-28 w-28 rounded-full bg-[#ffd29d]/20 blur-3xl animate-pulse" />
+
+      <div className="relative z-10 mx-auto w-full max-w-3xl pt-10">
         <h1
           style={{ fontFamily: "Montserrat" }}
           className="text-center text-3xl font-bold text-white sm:text-4xl lg:text-5xl"
@@ -12,7 +16,7 @@ function ThirdPage() {
           A Message <br /> From Your Brother
         </h1>
 
-        <div className="mt-6 rounded-2xl border-2 border-[#ff7ed8] bg-[#2c0e55]/20 p-4 text-white backdrop-blur-md sm:p-5">
+        <div className="mt-6 rounded-2xl border-2 border-[#ff7ed8] bg-[#2c0e55]/20 p-4 text-white shadow-[0_20px_60px_rgba(18,7,30,0.35)] backdrop-blur-md sm:p-5">
           <ul
             style={{ fontFamily: "Roboto Slab" }}
             className="flex flex-col gap-1 text-sm sm:text-[15px]"

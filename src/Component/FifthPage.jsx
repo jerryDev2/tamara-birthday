@@ -32,8 +32,10 @@ function FifthPage() {
   const [selectedGift, setSelectedGift] = useState(null);
 
   return (
-    <section className="min-h-screen w-full bg-[url(/images/image3.jpg)] bg-cover bg-center overflow-x-hidden px-4 py-20 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-6xl">
+    <section className="relative min-h-screen w-full overflow-x-hidden bg-[url(/images/image3.jpg)] bg-cover bg-center px-4 py-20 sm:px-6 lg:px-8">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.18),_transparent_30%),linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.18))]" />
+
+      <div className="relative z-10 mx-auto max-w-6xl">
         <div className="text-center text-[#2c0e55]">
           <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[#7b2d68]">
             Surprise time
@@ -157,4 +159,4 @@ function FifthPage() {
   );
 }
 
-export default FifthPage
+export default FifthPage;

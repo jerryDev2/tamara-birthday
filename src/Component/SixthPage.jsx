@@ -5,6 +5,8 @@ function SixthPage() {
   return (
     <section className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-[url(/images/image5.jpg)] bg-cover bg-center px-4 py-16 sm:px-6">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.22),_transparent_35%),linear-gradient(180deg,rgba(44,14,85,0.40),rgba(44,14,85,0.72))]" />
+      <div className="absolute left-10 top-10 h-28 w-28 rounded-full bg-[#ffb9d7]/25 blur-3xl animate-pulse" />
+      <div className="absolute bottom-10 right-12 h-32 w-32 rounded-full bg-[#ffe8b7]/25 blur-3xl animate-pulse" />
 
       <div className="relative z-10 w-full max-w-2xl rounded-[32px] border border-white/30 bg-white/10 p-6 text-center shadow-[0_25px_80px_rgba(19,8,35,0.45)] backdrop-blur-md sm:p-10">
         <p className="text-sm font-semibold uppercase tracking-[0.4em] text-[#ffe7a8]">
